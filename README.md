@@ -1,2 +1,2 @@
 # pc
-Unofficial PingCode Cli
+Unofficial PingCode Cli 🐶
