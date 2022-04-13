@@ -41,13 +41,13 @@ jobs:
     - name: build (release)
       run: go build -o ./out -v .
     - name: compress
-      uses: master-atul/tar-action@v1.0.2
+      uses: a7ul/tar-action@v1.1.0
       with:
         command: c
         cwd: ./out
         files: |
-          ${{ matrix.artifact_name }}
-        outPath: ./out/${{ matrix.asset_name }}
+          ./${{ matrix.artifact_name }}
+        outPath: ./${{ matrix.asset_name }}
     - name: upload release assets
       id: upload-release-assets
       uses: actions/upload-release-asset@v1
