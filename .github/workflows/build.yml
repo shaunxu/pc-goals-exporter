@@ -37,7 +37,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: checkout the source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
     - name: build (release)
       run: go build -o ./out/ -v .
     - name: compress
