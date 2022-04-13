@@ -39,7 +39,7 @@ jobs:
     - name: checkout the source code
       uses: actions/checkout@v2
     - name: build (release)
-      run: go build -o ./out -v .
+      run: go build -o ./out/ -v .
     - name: compress
       uses: a7ul/tar-action@v1.1.0
       with:
