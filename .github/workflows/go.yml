@@ -20,4 +20,4 @@ jobs:
         go-version: 1.18
 
     - name: Build
-      run: go build -o ./out/ -v .
+      run: go build -v .
