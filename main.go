@@ -95,7 +95,7 @@ func main() {
 			builder.WriteString(fmt.Sprintf("| %s ", value.Name))
 			builder.WriteString("| <ul>")
 			for _, kr := range value.Key_results {
-				builder.WriteString(fmt.Sprintf("<li>%s</li>", kr.Name))
+				builder.WriteString(fmt.Sprintf("<li>%s（%.0f%%）</li>", kr.Name, kr.Rate*100))
 			}
 			builder.WriteString("</ul> |")
 			if *ratePtr {
@@ -106,9 +106,9 @@ func main() {
 	case "json":
 	default:
 		for _, value := range response.Data.Value {
-			builder.WriteString(fmt.Sprintf("目标: %s (%.0f%%)\n", value.Name, value.Rate*100))
+			builder.WriteString(fmt.Sprintf("目标: %s （%.0f%%）\n", value.Name, value.Rate*100))
 			for _, kr := range value.Key_results {
-				builder.WriteString(fmt.Sprintf("\t关键结果: %s (%.0f%%)\n", kr.Name, kr.Rate*100))
+				builder.WriteString(fmt.Sprintf("\t关键结果: %s（%.0f%%）\n", kr.Name, kr.Rate*100))
 			}
 		}
 	}
