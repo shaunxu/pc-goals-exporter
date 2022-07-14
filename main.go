@@ -95,7 +95,11 @@ func main() {
 			builder.WriteString(fmt.Sprintf("| %s ", value.Name))
 			builder.WriteString("| <ul>")
 			for _, kr := range value.Key_results {
-				builder.WriteString(fmt.Sprintf("<li>%s（%.0f%%）</li>", kr.Name, kr.Rate*100))
+				if *ratePtr {
+					builder.WriteString(fmt.Sprintf("<li>%s（%.0f%%）</li>", kr.Name, kr.Rate*100))
+				} else {
+					builder.WriteString(fmt.Sprintf("<li>%s</li>", kr.Name))
+				}
 			}
 			builder.WriteString("</ul> |")
 			if *ratePtr {
