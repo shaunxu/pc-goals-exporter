@@ -44,7 +44,7 @@ func main() {
 	ratePtr := flag.Bool("r", false, "with rate column")
 	cookieFilePath := flag.String("c", "", "cookie file path in 'Netscape Cookie File' format")
 	flag.Parse()
-	url := fmt.Sprintf("https://%s/api/goals/periods/%s/users/%s/objectives", *hostPtr, *periodPtr, *userPtr)
+	url := fmt.Sprintf("https://%s/api/teams/periods/%s/users/%s/objectives", *hostPtr, *periodPtr, *userPtr)
 
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("Accept", "application/json")
@@ -71,6 +71,7 @@ func main() {
 	}
 
 	for i, value := range response.Data.Value {
+		response.Data.Value[i].Rate = 0 // do not use the objective rate from api since its not correct
 		for _, kr := range value.Key_results {
 			response.Data.Value[i].Rate += kr.Rate * kr.Weight
 		}
